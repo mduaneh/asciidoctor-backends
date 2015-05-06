@@ -1,6 +1,7 @@
 - deckjs_version = (attr :deckjs_version, '1.1.0')
 - deckjsdir = (attr :deckjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/deck.js/1.1.0')
-!!! 5
+- modernizrjs = (attr :modernizrjs, 'http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')
+!!! 
 %html{:lang=>(attr :lang, 'en')}
   %head
     %meta(http-equiv='Content-Type' content="text/html; charset=#{attr :encoding}")
@@ -64,7 +65,7 @@
     - if attr? :customcss
       %link(rel='stylesheet' href="#{attr :customcss, 'customcss.css'}")
     %link(rel='stylesheet' media='print' href="#{deckjsdir}/core/print.css")
-    %script(src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js")
+    %script(src="#{modernizrjs}")
   %body{:id=>@id, :class=>doctype, :style=>("max-width: #{attr 'max-width'};" if (attr? 'max-width'))}
     .deck-container
       - unless noheader
