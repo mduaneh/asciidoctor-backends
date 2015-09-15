@@ -1,6 +1,9 @@
 - deckjs_version = (attr :deckjs_version, '1.1.0')
 - deckjsdir = (attr :deckjsdir, 'https://cdnjs.cloudflare.com/ajax/libs/deck.js/1.1.0')
 - modernizrjs = (attr :modernizrjs, 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')
+- brandimage = (attr :brandimage, 'https://github.qualcomm.com/pages/mhale/cdn/branding/images/branding.png')
+- brandtext = (attr :brandtext, 'WIRE - Engineering Compute')
+- brandextratext = (attr :brandextratext, 'Qualcomm Confidential - SHRED BIN DISPOSAL ONLY')
 !!! 
 %html{:lang=>(attr :lang, 'en')}
   %head
@@ -62,6 +65,8 @@
       %link(rel='stylesheet' media='screen' href="#{deckjsdir}/themes/style/#{attr :deckjs_theme, 'web-2.0'}.css")
     - unless attr :deckjs_transition == 'none'
       %link(rel='stylesheet' media='screen' href="#{deckjsdir}/themes/transition/#{attr :deckjs_transition, 'fade'}.css")
+    - unless attr :branding == 'none'
+      %link(rel='stylesheet' media='screen' href="#{deckjsdir}/extensions/branding/deck.branding.css")
     - if attr? :customcss
       %link(rel='stylesheet' href="#{attr :customcss, 'customcss.css'}")
     %link(rel='stylesheet' media='print' href="#{deckjsdir}/core/print.css")
@@ -107,6 +112,11 @@
           %input(type='text' name='slidenum' id='goto-slide' list='goto-datalist')
           %datalist(id='goto-data-list')
           %input(type='submit' value='Go')
+      - if attr? :branding
+        %div(aria-role='branding' class='branding')
+          %div(class='branding-image' style='background: url(#{brandimage});')
+            %div(class='branding-text') #{brandtext}
+            %div(class='branding-extratext')#{brandextratext}
       - if deckjs_version <= '1.0.0'
         %a(href='.' title='Permalink to this slide' class='deck-permalink') #
     %script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js")
