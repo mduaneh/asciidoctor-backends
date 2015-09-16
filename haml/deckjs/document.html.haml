@@ -114,7 +114,7 @@
           %input(type='submit' value='Go')
       - if attr? :branding
         %div(aria-role='branding' class='branding')
-          %div(class='branding-image' style='background: url(#{brandimage});')
+          %div(class='branding-image' style='background-image: url(#{brandimage});')
             %div(class='branding-text') #{brandtext}
             %div(class='branding-extratext')#{brandextratext}
       - if deckjs_version <= '1.0.0'
