@@ -74,7 +74,7 @@
   %body{:id=>@id, :class=>doctype, :style=>("max-width: #{attr 'max-width'};" if (attr? 'max-width'))}
     .deck-container
       - unless noheader
-        %section(class='slide' id='title-slide')
+        %section{:class=>("slide"), :id=>("title-slide"), :style=>("background-image: url(#{attr 'brandtitleimage'}); background-repeat: no-repeat; background-size: cover;" if (attr? 'brandtitleimage'))}
           - unless notitle
             %h1=@header.title
           - if attr? :author
